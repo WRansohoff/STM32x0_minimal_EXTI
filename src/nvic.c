@@ -1,7 +1,7 @@
 #include "nvic.h"
 
 void EXTI0_1_IRQ_handler(void) {
-  // Check that EXTI7 is the line that triggered.
+  // Check that EXTI1 (or 0?) is the line that triggered.
   if (EXTI->PR & (1 << BUTTON_PIN)) {
     // If it was, clear the interrupt flag.
     EXTI->PR |= (1 << BUTTON_PIN);
