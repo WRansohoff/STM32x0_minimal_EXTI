@@ -35,8 +35,8 @@ int main(void) {
   SYSCFG->EXTICR[(BUTTON_PIN/4)] &= ~(0xF << ((BUTTON_PIN % 4) * 4));
   SYSCFG->EXTICR[(BUTTON_PIN/4)] |=  (0x1 << ((BUTTON_PIN % 4) * 4));
   // (Or, if you don't feel like using pin macros:)
-  //SYSCFG->EXTICR[0] &= ~(SYSCFG_EXTICR2_EXTI1_Msk);
-  //SYSCFG->EXTICR[0] |= SYSCFG_EXTICR2_EXTI1_PB;
+  //SYSCFG->EXTICR[0] &= ~(SYSCFG_EXTICR1_EXTI1_Msk);
+  //SYSCFG->EXTICR[0] |= SYSCFG_EXTICR1_EXTI1_PB;
   // Setup EXTI interrupts for falling input on pin B7.
   EXTI->IMR |= (1 << BUTTON_PIN);
   // Disable the 'rising edge' trigger (button release).
