@@ -17,7 +17,7 @@ int main(void) {
   #endif
   // Initialize the GPIOB pins.
   // Reset all options, because the L0 lines reset to 0xFFFFFFFF.
-  // B6-7 should be set to 'input' mode with pull-up.
+  // B0-1 should be set to 'input' mode with pull-up.
   GPIOB->MODER  &= ~(0x3 << (BUTTON_PIN*2));
   GPIOB->PUPDR  &= ~(0x3 << (BUTTON_PIN*2));
   GPIOB->PUPDR  |=  (0x1 << (BUTTON_PIN*2));
@@ -37,7 +37,7 @@ int main(void) {
   // (Or, if you don't feel like using pin macros:)
   //SYSCFG->EXTICR[0] &= ~(SYSCFG_EXTICR1_EXTI1_Msk);
   //SYSCFG->EXTICR[0] |= SYSCFG_EXTICR1_EXTI1_PB;
-  // Setup EXTI interrupts for falling input on pin B7.
+  // Setup EXTI interrupts for falling input on the button pin.
   EXTI->IMR |= (1 << BUTTON_PIN);
   // Disable the 'rising edge' trigger (button release).
   EXTI->RTSR &= ~(1 << BUTTON_PIN);
